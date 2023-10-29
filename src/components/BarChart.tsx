@@ -73,7 +73,7 @@ const BarChart = React.forwardRef<HTMLDivElement, BaseChartProps>(
         <ResponsiveContainer className="h-full w-full">
           <ReChartsBarChart
             data={data}
-            stackOffset={relative ? 'expand' : 'none'}
+            stackOffset={relative ? 'sign' : 'none'}
             layout={layout === 'vertical' ? 'vertical' : 'horizontal'}
             onClick={
               hasOnValueChange && activeBar
@@ -146,9 +146,9 @@ const BarChart = React.forwardRef<HTMLDivElement, BaseChartProps>(
             />
             {categories.map((category) => (
               <Bar
-                className={`fill-blue-600 ${
-                  onValueChange ? 'cursor-pointer' : ''
-                }`}
+                className={`${
+                  category === 'Sales' ? 'fill-blue-600' : 'fill-rose-500'
+                } ${onValueChange ? 'cursor-pointer' : ''}`}
                 key={category}
                 name={category}
                 type="linear"
