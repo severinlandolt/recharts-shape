@@ -22,15 +22,12 @@ const renderShape = (
   const { fillOpacity, payload, value } = props
   let { x, width, y, height } = props
 
-  // Layout fix
-  if (value < 0) {
-    if (layout === 'horizontal') {
-      y += height
-      height = Math.abs(height) // height must be a positive number
-    } else if (layout === 'vertical') {
-      x += width
-      width = Math.abs(width) // width must be a positive number
-    }
+  if (layout === 'horizontal' && height < 0) {
+    y += height
+    height = Math.abs(height) // height must be a positive number
+  } else if (layout === 'vertical' && width < 0) {
+    x += width
+    width = Math.abs(width) // width must be a positive number
   }
 
   return (
@@ -89,7 +86,7 @@ const BarChart = React.forwardRef<HTMLDivElement, BaseChartProps>(
         <ResponsiveContainer className="h-full w-full">
           <ReChartsBarChart
             data={data}
-            stackOffset={relative ? 'sign' : 'none'}
+            stackOffset={relative ? 'expand' : 'none'}
             layout={layout === 'vertical' ? 'vertical' : 'horizontal'}
             onClick={
               hasOnValueChange && activeBar

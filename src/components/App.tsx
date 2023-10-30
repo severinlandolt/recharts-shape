@@ -74,6 +74,48 @@ function App() {
           stack={true}
         />
       </div>
+      <p className="text-lg font-bold">
+        BarChart with LayoutFix and relative = true
+      </p>
+      <div className="flex w-full max-w-2xl flex-wrap gap-24">
+        <BarChartLayoutFix
+          data={simpleBaseChartWithNegativeValues}
+          categories={['Sales', 'Payment']}
+          index="month"
+          onValueChange={(v) => setData(JSON.stringify(v))}
+          relative={true}
+        />
+        <BarChartLayoutFix
+          data={simpleBaseChartWithNegativeValues}
+          categories={['Sales', 'Payment']}
+          index="month"
+          onValueChange={(v) => setData(JSON.stringify(v))}
+          layout="vertical"
+          relative={true}
+        />
+      </div>
+      <p className="text-lg font-bold">
+        BarChart with LayoutFix and stack = true and relative = true
+      </p>
+      <div className="flex w-full max-w-2xl flex-wrap gap-24">
+        <BarChartLayoutFix
+          data={simpleBaseChartWithNegativeValues}
+          categories={['Sales', 'Payment']}
+          index="month"
+          onValueChange={(v) => setData(JSON.stringify(v))}
+          relative={true}
+          stack={true}
+        />
+        <BarChartLayoutFix
+          data={simpleBaseChartWithNegativeValues}
+          categories={['Sales', 'Payment']}
+          index="month"
+          onValueChange={(v) => setData(JSON.stringify(v))}
+          layout="vertical"
+          relative={true}
+          stack={true}
+        />
+      </div>
     </main>
   )
 }
